@@ -17,7 +17,7 @@ export default class NetworkLayer {
   }
 
   sendQueries(queryRequests) {
-    Promise.all(queryRequests.map(queryRequest =>
+    return Promise.all(queryRequests.map(queryRequest =>
       this._executeRequest('query', queryRequest)
     ));
   }
