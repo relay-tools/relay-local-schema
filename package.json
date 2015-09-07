@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/taion/relay-local-schema.git"
+    "url": "git+https://github.com/relay-tools/relay-local-schema.git"
   },
   "keywords": [
     "relay",
@@ -25,9 +25,9 @@
   "author": "Jimmy Jia",
   "license": "CC0-1.0",
   "bugs": {
-    "url": "https://github.com/taion/relay-local-schema/issues"
+    "url": "https://github.com/relay-tools/relay-local-schema/issues"
   },
-  "homepage": "https://github.com/taion/relay-local-schema#readme",
+  "homepage": "https://github.com/relay-tools/relay-local-schema#readme",
   "devDependencies": {
     "babel": "^5.8.23",
     "babel-eslint": "^4.1.0",
