@@ -3,9 +3,10 @@ import {graphql} from 'graphql';
 import formatRequestErrors from './__forks__/formatRequestErrors';
 
 export default class NetworkLayer {
-  constructor({schema, rootValue}) {
+  constructor({schema, rootValue, onError}) {
     this._schema = schema;
     this._rootValue = rootValue;
+    this._onError = onError;
   }
 
   sendMutation(mutationRequest) {
@@ -23,23 +24,26 @@ export default class NetworkLayer {
   }
 
   async _executeRequest(requestType, request) {
-    const result = await graphql(
+    const {data, errors} = await graphql(
       this._schema,
       request.getQueryString(),
       this._rootValue,
       request.getVariables()
     );
 
-    if (result.errors) {
+    if (errors) {
       request.reject(new Error(
         `Failed to execute ${requestType} \`${request.getDebugName()}\` for ` +
         'the following reasons:\n\n' +
-        formatRequestErrors(request, result.errors)
+        formatRequestErrors(request, errors)
       ));
+      if (this._onError) {
+        this._onError(errors);
+      }
       return;
     }
 
-    request.resolve({response: result.data});
+    request.resolve({response: data});
   }
 
   supports() {

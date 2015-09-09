@@ -14,10 +14,14 @@ import schema from './data/schema';
 Relay.injectNetworkLayer(new RelayLocalSchema.NetworkLayer({schema}));
 ```
 
-You can also supply a `rootValue` to the constructor:
+You can also supply a GraphQL.js `rootValue` or an `onError` callback to the constructor:
 
 ```js
 Relay.injectNetworkLayer(
-  new RelayLocalSchema.NetworkLayer({schema, rootValue})
+  new RelayLocalSchema.NetworkLayer({
+    schema,
+    rootValue: "foo",
+    onError: errors => console.log(errors)
+  })
 );
 ```
