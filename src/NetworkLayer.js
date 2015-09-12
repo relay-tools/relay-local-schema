@@ -38,7 +38,7 @@ export default class NetworkLayer {
         formatRequestErrors(request, errors)
       ));
       if (this._onError) {
-        this._onError(errors);
+        this._onError(errors, request);
       }
       return;
     }
