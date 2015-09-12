@@ -24,11 +24,13 @@ export default class NetworkLayer {
   }
 
   async _executeRequest(requestType, request) {
+    const queryString = request.getQueryString();
+    const variables = request.getVariables();
     const {data, errors} = await graphql(
       this._schema,
-      request.getQueryString(),
+      queryString,
       this._rootValue,
-      request.getVariables()
+      variables
     );
 
     if (errors) {
@@ -38,7 +40,7 @@ export default class NetworkLayer {
         formatRequestErrors(request, errors)
       ));
       if (this._onError) {
-        this._onError(errors);
+        this._onError(errors, queryString, variables);
       }
       return;
     }
