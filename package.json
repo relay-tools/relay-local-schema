@@ -39,7 +39,7 @@
   },
   "peerDependencies": {
     "graphql": "^0.4.2",
-    "react-relay": "^0.2.0 || ^0.3.1"
+    "react-relay": "^0.3.1"
   },
   "dependencies": {
     "babel-runtime": "^5.8.20"

@@ -21,7 +21,7 @@ Relay.injectNetworkLayer(
   new RelayLocalSchema.NetworkLayer({
     schema,
     rootValue: "foo",
-    onError: errors => console.log(errors)
+    onError: (errors, request) => console.log(errors, request)
   })
 );
 ```
