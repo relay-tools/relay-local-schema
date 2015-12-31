@@ -1,4 +1,4 @@
-# relay-local-schema [![npm][npm-badge]][npm]
+# relay-local-schema [![Travis][build-badge]][build] [![npm][npm-badge]][npm]
 Use [Relay](http://facebook.github.io/relay/) without a GraphQL server.
 
 [![Discord][discord-badge]][discord]
@@ -29,6 +29,9 @@ Relay.injectNetworkLayer(
   })
 );
 ```
+
+[build-badge]: https://img.shields.io/travis/relay-tools/relay-local-schema/master.svg
+[build]: https://travis-ci.org/relay-tools/relay-local-schema
 
 [npm-badge]: https://img.shields.io/npm/v/relay-local-schema.svg
 [npm]: https://www.npmjs.org/package/relay-local-schema
