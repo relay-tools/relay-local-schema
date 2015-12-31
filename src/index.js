@@ -1,2 +1,2 @@
 import NetworkLayer from './NetworkLayer';
-export default {NetworkLayer};
+export default { NetworkLayer };

@@ -1,9 +1,9 @@
-import {graphql} from 'graphql';
+import { graphql } from 'graphql';
 
 import formatRequestErrors from './__forks__/formatRequestErrors';
 
 export default class NetworkLayer {
-  constructor({schema, rootValue, onError}) {
+  constructor({ schema, rootValue, onError }) {
     this._schema = schema;
     this._rootValue = rootValue;
     this._onError = onError;
@@ -24,7 +24,7 @@ export default class NetworkLayer {
   }
 
   async _executeRequest(requestType, request) {
-    const {data, errors} = await graphql(
+    const { data, errors } = await graphql(
       this._schema,
       request.getQueryString(),
       this._rootValue,
@@ -43,7 +43,7 @@ export default class NetworkLayer {
       return;
     }
 
-    request.resolve({response: data});
+    request.resolve({ response: data });
   }
 
   supports() {
