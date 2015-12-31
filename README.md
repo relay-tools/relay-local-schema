@@ -11,9 +11,12 @@ This is intended for exploratory work, integration tests, demos, and working wit
 
 ```js
 import RelayLocalSchema from 'relay-local-schema';
+
 import schema from './data/schema';
 
-Relay.injectNetworkLayer(new RelayLocalSchema.NetworkLayer({schema}));
+Relay.injectNetworkLayer(
+  new RelayLocalSchema.NetworkLayer({ schema })
+);
 ```
 
 You can also supply a GraphQL.js `rootValue` or an `onError` callback to the
@@ -23,8 +26,8 @@ constructor:
 Relay.injectNetworkLayer(
   new RelayLocalSchema.NetworkLayer({
     schema,
-    rootValue: "foo",
-    onError: (errors, request) => console.log(errors, request)
+    rootValue: 'foo',
+    onError: (errors, request) => console.error(errors, request),
   })
 );
 ```
