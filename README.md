@@ -5,10 +5,9 @@ Use [Relay](http://facebook.github.io/relay/) without a GraphQL server.
 
 ## Usage
 
-Use `RelayLocalSchema.NetworkLayer` to execute GraphQL queries locally, rather
-than against a separate GraphQL server. This is intended for exploratory work,
-demos, and working with local data. You should not use this as a substitute for
-an actual GraphQL server for accessing a remote backend.
+Use `RelayLocalSchema.NetworkLayer` to execute GraphQL queries locally, rather than against a separate GraphQL server.
+
+This is intended for exploratory work, integration tests, demos, and working with local data. This is not generally intended as a substitute for a remote backend, except possibly when using local data as a persistent cache.
 
 ```js
 import RelayLocalSchema from 'relay-local-schema';
