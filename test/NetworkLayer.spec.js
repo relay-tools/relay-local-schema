@@ -115,7 +115,7 @@ describe('NetworkLayer', () => {
           expect(ReactDOM.findDOMNode(this).innerHTML).to.equal('foo');
 
           const { widget } = this.props;
-          Relay.Store.update(
+          Relay.Store.commitUpdate(
             new SetWidgetNameMutation({ widget, name: 'bar' })
           );
         }
