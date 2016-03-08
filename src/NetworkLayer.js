@@ -44,12 +44,14 @@ export default class NetworkLayer {
     }
     // As of version 0.7.3 of relay, the response data in case of a
     // mutation must be an instance of Object
-    if (requestType == "mutation"){
-      for (var k in data){
-        if (data[k])
-        data[k] = Object.assign({}, data[k]);
+    if (requestType === 'mutation') {
+      for (const k in data) {
+        if (data[k]) {
+          data[k] = Object.assign({}, data[k]);
+        }
       }
     }
+
     request.resolve({ response: data });
   }
 
