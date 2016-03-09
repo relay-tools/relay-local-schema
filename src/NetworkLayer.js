@@ -42,6 +42,16 @@ export default class NetworkLayer {
       }
       return;
     }
+    // As of version 0.7.3 of relay, the response data in case of a
+    // mutation must be an instance of Object
+    // But recent versions of Graphql returns objects with no prototype
+    if (requestType === 'mutation') {
+      for (const k in data) {
+        if (!(data[k] instanceof Object)) {
+          data[k] = Object.assign({}, data[k]);
+        }
+      }
+    }
 
     request.resolve({ response: data });
   }
