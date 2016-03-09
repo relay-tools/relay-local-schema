@@ -3,8 +3,5 @@
   "loose": "all",
   "optional": [
     "runtime"
-  ],
-  "plugins": [
-    "dev-expression"
   ]
 }
