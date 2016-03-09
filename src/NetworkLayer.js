@@ -34,8 +34,7 @@ export default class NetworkLayer {
     if (errors) {
       request.reject(new Error(
         `Failed to execute ${requestType} \`${request.getDebugName()}\` for ` +
-        'the following reasons:\n\n' +
-        formatRequestErrors(request, errors)
+        `the following reasons:\n\n${formatRequestErrors(request, errors)}`
       ));
       if (this._onError) {
         this._onError(errors, request);
@@ -43,7 +42,12 @@ export default class NetworkLayer {
       return;
     }
 
-    request.resolve({ response: data });
+    // Round-trip the response through JSON to mimic the behavior of a GraphQL
+    // server. This also avoids issues where graphql-js uses null-prototype
+    // objects where Relay expects POJSOs.
+    const response = JSON.parse(JSON.stringify(data));
+
+    request.resolve({ response });
   }
 
   supports() {
