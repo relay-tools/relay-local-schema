@@ -29,26 +29,26 @@
   },
   "homepage": "https://github.com/relay-tools/relay-local-schema#readme",
   "dependencies": {
-    "babel-runtime": "5.x"
+    "babel-runtime": "^5.8.38"
   },
   "peerDependencies": {
-    "graphql": ">=0.4.0",
-    "react-relay": ">=0.6.0"
+    "graphql": "^0.4.0",
+    "react-relay": ">=0.8.0"
   },
   "devDependencies": {
-    "babel": "5.x",
-    "babel-core": "5.x",
-    "babel-eslint": "4.x",
-    "babel-loader": "5.x",
-    "babel-relay-plugin": "0.7.3",
+    "babel": "^5.8.38",
+    "babel-core": "^5.8.38",
+    "babel-eslint": "^4.1.8",
+    "babel-loader": "^5.4.0",
+    "babel-relay-plugin": "^0.8.0",
     "chai": "^3.5.0",
-    "eslint": "1.x",
-    "eslint-config-airbnb": "5.x",
-    "eslint-plugin-react": "3.x",
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^5.0.1",
+    "eslint-plugin-react": "^3.16.1",
     "graphql": "^0.4.18",
     "graphql-relay": "^0.3.6",
     "karma": "^0.13.22",
-    "karma-chrome-launcher": "^0.2.2",
+    "karma-chrome-launcher": "^0.2.3",
     "karma-firefox-launcher": "^0.1.7",
     "karma-mocha": "^0.2.2",
     "karma-mocha-reporter": "^2.0.0",
@@ -57,12 +57,12 @@
     "karma-webpack": "^1.7.0",
     "lolex": "^1.4.0",
     "mocha": "^2.4.5",
-    "react": "^0.14.7",
-    "react-dom": "^0.14.7",
-    "react-relay": "^0.7.3",
+    "react": "^15.0.1",
+    "react-dom": "^15.0.1",
+    "react-relay": "^0.8.0",
     "rimraf": "^2.5.2",
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0",
-    "webpack": "^1.12.14"
+    "webpack": "^1.12.15"
   }
 }
