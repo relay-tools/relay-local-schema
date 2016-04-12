@@ -42,12 +42,7 @@ export default class NetworkLayer {
       return;
     }
 
-    // Round-trip the response through JSON to mimic the behavior of a GraphQL
-    // server. This also avoids issues where graphql-js uses null-prototype
-    // objects where Relay expects POJSOs.
-    const response = JSON.parse(JSON.stringify(data));
-
-    request.resolve({ response });
+    request.resolve({ response: data });
   }
 
   supports() {
