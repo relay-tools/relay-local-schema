@@ -32,7 +32,7 @@
     "babel-runtime": "^5.8.38"
   },
   "peerDependencies": {
-    "graphql": "^0.4.0",
+    "graphql": "^0.5.0",
     "react-relay": ">=0.8.0"
   },
   "devDependencies": {
@@ -45,8 +45,8 @@
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^5.0.1",
     "eslint-plugin-react": "^3.16.1",
-    "graphql": "^0.4.18",
-    "graphql-relay": "^0.3.6",
+    "graphql": "^0.5.0",
+    "graphql-relay": "^0.4.1",
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^0.2.3",
     "karma-firefox-launcher": "^0.1.7",

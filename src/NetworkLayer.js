@@ -3,9 +3,10 @@ import { graphql } from 'graphql';
 import formatRequestErrors from './__forks__/formatRequestErrors';
 
 export default class NetworkLayer {
-  constructor({ schema, rootValue, onError }) {
+  constructor({ schema, rootValue, contextValue, onError }) {
     this._schema = schema;
     this._rootValue = rootValue;
+    this._contextValue = contextValue;
     this._onError = onError;
   }
 
@@ -28,6 +29,7 @@ export default class NetworkLayer {
       this._schema,
       request.getQueryString(),
       this._rootValue,
+      this._contextValue,
       request.getVariables()
     );
 
