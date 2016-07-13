@@ -1,6 +1,6 @@
 {
   "name": "relay-local-schema",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Use Relay without a GraphQL server",
   "files": [
     "lib"
