@@ -4,10 +4,10 @@ import formatRequestErrors from './__forks__/formatRequestErrors';
 
 export default class NetworkLayer {
   constructor({ schema, rootValue, contextValue, onError }) {
-    this._schema = schema;
-    this._rootValue = rootValue;
-    this._contextValue = contextValue;
-    this._onError = onError;
+    this.schema = schema;
+    this.rootValue = rootValue;
+    this.context = contextValue;
+    this.onError = onError;
   }
 
   sendMutation(mutationRequest) {
@@ -15,21 +15,21 @@ export default class NetworkLayer {
       throw new Error('uploading files not supported');
     }
 
-    return this._executeRequest('mutation', mutationRequest);
+    return this.executeRequest('mutation', mutationRequest);
   }
 
   sendQueries(queryRequests) {
     return Promise.all(queryRequests.map(queryRequest =>
-      this._executeRequest('query', queryRequest)
+      this.executeRequest('query', queryRequest)
     ));
   }
 
-  async _executeRequest(requestType, request) {
+  async executeRequest(requestType, request) {
     const { data, errors } = await graphql(
-      this._schema,
+      this.schema,
       request.getQueryString(),
-      this._rootValue,
-      this._contextValue,
+      this.rootValue,
+      this.context,
       request.getVariables()
     );
 
@@ -38,9 +38,10 @@ export default class NetworkLayer {
         `Failed to execute ${requestType} \`${request.getDebugName()}\` for ` +
         `the following reasons:\n\n${formatRequestErrors(request, errors)}`
       ));
-      if (this._onError) {
-        this._onError(errors, request);
+      if (this.onError) {
+        this.onError(errors, request);
       }
+
       return;
     }
 

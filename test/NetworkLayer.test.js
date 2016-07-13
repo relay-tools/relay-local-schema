@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactTestUtils from 'react/lib/ReactTestUtils';
+import ReactTestUtils from 'react-addons-test-utils';
 import ReactDOM from 'react-dom';
 import Relay from 'react-relay';
 
@@ -8,8 +8,11 @@ import RelayLocalSchema from '../src';
 import schema, { resetData } from './fixtures/schema';
 
 describe('NetworkLayer', () => {
+  let environment;
+
   beforeEach(() => {
-    Relay.injectNetworkLayer(
+    environment = new Relay.Environment();
+    environment.injectNetworkLayer(
       new RelayLocalSchema.NetworkLayer({ schema })
     );
 
@@ -18,26 +21,24 @@ describe('NetworkLayer', () => {
 
   describe('query', () => {
     it('should fetch data', done => {
-      class Widget extends React.Component {
-        render() {
-          return (
-            <div>{this.props.widget.name}</div>
-          );
-        }
+      function Widget({ widget }) {
+        return (
+          <div>{widget.name}</div>
+        );
       }
 
       const WidgetContainer = Relay.createContainer(Widget, {
         fragments: {
           widget: () => Relay.QL`
             fragment on Widget {
-              name,
+              name
             }
           `,
         },
       });
 
-      const widgetRoute = {
-        name: 'WidgetRoute',
+      const widgetQueryConfig = {
+        name: 'WidgetQueryConfig',
         queries: {
           widget: () => Relay.QL`query { widget }`,
         },
@@ -56,9 +57,10 @@ describe('NetworkLayer', () => {
 
         render() {
           return (
-            <Relay.RootContainer
-              Component={WidgetContainer}
-              route={widgetRoute}
+            <Relay.Renderer
+              Container={WidgetContainer}
+              queryConfig={widgetQueryConfig}
+              environment={environment}
               onReadyStateChange={this.onReadyStateChange}
             />
           );
@@ -75,7 +77,7 @@ describe('NetworkLayer', () => {
         static fragments = {
           widget: () => Relay.QL`
             fragment on Widget {
-              id,
+              id
             }
           `,
         };
@@ -88,8 +90,8 @@ describe('NetworkLayer', () => {
           return Relay.QL`
             fragment on SetWidgetNamePayload {
               widget {
-                name,
-              },
+                name
+              }
             }
           `;
         }
@@ -114,8 +116,9 @@ describe('NetworkLayer', () => {
         componentDidMount() {
           expect(ReactDOM.findDOMNode(this).innerHTML).to.equal('foo');
 
-          const { widget } = this.props;
-          Relay.Store.commitUpdate(
+          const { relay, widget } = this.props;
+
+          relay.commitUpdate(
             new SetWidgetNameMutation({ widget, name: 'bar' })
           );
         }
@@ -136,30 +139,29 @@ describe('NetworkLayer', () => {
         fragments: {
           widget: () => Relay.QL`
             fragment on Widget {
-              name,
-              ${SetWidgetNameMutation.getFragment('widget')},
+              name
+              ${SetWidgetNameMutation.getFragment('widget')}
             }
           `,
         },
       });
 
-      const widgetRoute = {
-        name: 'WidgetRoute',
+      const widgetQueryConfig = {
+        name: 'WidgetQueryConfig',
         queries: {
           widget: () => Relay.QL`query { widget }`,
         },
         params: {},
       };
 
-      class Component extends React.Component {
-        render() {
-          return (
-            <Relay.RootContainer
-              Component={WidgetContainer}
-              route={widgetRoute}
-            />
-          );
-        }
+      function Component() {
+        return (
+          <Relay.Renderer
+            Container={WidgetContainer}
+            queryConfig={widgetQueryConfig}
+            environment={environment}
+          />
+        );
       }
 
       ReactTestUtils.renderIntoDocument(<Component />);
