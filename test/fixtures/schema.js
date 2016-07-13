@@ -1,9 +1,7 @@
-import {
-  GraphQLNonNull, GraphQLObjectType, GraphQLSchema, GraphQLString,
-} from 'graphql';
-import {
-  globalIdField, mutationWithClientMutationId, nodeDefinitions,
-} from 'graphql-relay';
+import { GraphQLNonNull, GraphQLObjectType, GraphQLSchema, GraphQLString }
+  from 'graphql';
+import { globalIdField, mutationWithClientMutationId, nodeDefinitions }
+  from 'graphql-relay';
 
 const widget = {
   id: '',
