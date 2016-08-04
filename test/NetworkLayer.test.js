@@ -51,7 +51,7 @@ describe('NetworkLayer', () => {
             return;
           }
 
-          expect(ReactDOM.findDOMNode(this).innerHTML).to.equal('foo');
+          expect(ReactDOM.findDOMNode(this).innerHTML).to.equal('foo');  // eslint-disable-line react/no-find-dom-node
           done();
         };
 
@@ -114,7 +114,7 @@ describe('NetworkLayer', () => {
 
       class Widget extends React.Component {
         componentDidMount() {
-          expect(ReactDOM.findDOMNode(this).innerHTML).to.equal('foo');
+          expect(this.node.innerHTML).to.equal('foo');
 
           const { relay, widget } = this.props;
 
@@ -124,13 +124,15 @@ describe('NetworkLayer', () => {
         }
 
         componentDidUpdate() {
-          expect(ReactDOM.findDOMNode(this).innerHTML).to.equal('bar');
+          expect(this.node.innerHTML).to.equal('bar');
           done();
         }
 
         render() {
           return (
-            <div>{this.props.widget.name}</div>
+            <div ref={c => { this.node = c; }}>
+              {this.props.widget.name}
+            </div>
           );
         }
       }
