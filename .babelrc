@@ -1,4 +1,16 @@
 {
-  "presets": ["es2015-loose", "stage-1"],
-  "plugins": ["add-module-exports"]
+  "presets": [
+    "es2015-loose",
+    "stage-1"
+  ],
+  "plugins": [
+    "add-module-exports",
+    [
+      "transform-runtime",
+      {
+        "polyfill": false,
+        "regenerator": true
+      }
+    ]
+  ]
 }
