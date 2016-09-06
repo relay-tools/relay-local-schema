@@ -11,8 +11,9 @@
     "build-fixtures": "babel-node test/fixtures/updateSchema.js",
     "lint": "eslint src test *.js",
     "prepublish": "npm run build",
+    "tdd": "karma start",
     "test": "npm run build-fixtures && npm run lint && npm run testonly",
-    "testonly": "karma start"
+    "testonly": "npm run tdd -- --single-run"
   },
   "repository": {
     "type": "git",
