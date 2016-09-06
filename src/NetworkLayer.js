@@ -24,28 +24,28 @@ export default class NetworkLayer {
     ));
   }
 
-  async executeRequest(requestType, request) {
-    const { data, errors } = await graphql(
+  executeRequest(requestType, request) {
+    graphql(
       this.schema,
       request.getQueryString(),
       this.rootValue,
       this.context,
       request.getVariables()
-    );
+    ).then(({ data, errors }) => {
+      if (errors) {
+        request.reject(new Error(
+          `Failed to execute ${requestType} \`${request.getDebugName()}\` for ` +
+          `the following reasons:\n\n${formatRequestErrors(request, errors)}`
+        ));
+        if (this.onError) {
+          this.onError(errors, request);
+        }
 
-    if (errors) {
-      request.reject(new Error(
-        `Failed to execute ${requestType} \`${request.getDebugName()}\` for ` +
-        `the following reasons:\n\n${formatRequestErrors(request, errors)}`
-      ));
-      if (this.onError) {
-        this.onError(errors, request);
+        return;
       }
 
-      return;
-    }
-
-    request.resolve({ response: data });
+      request.resolve({ response: data });
+    });
   }
 
   supports() {
