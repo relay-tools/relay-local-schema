@@ -36,6 +36,12 @@ const query = new GraphQLObjectType({
       type: Widget,
       resolve: () => widget,
     },
+    invalid: {
+      type: Widget,
+      resolve: () => {
+        throw Error('Always fail');
+      },
+    },
   },
 });
 
