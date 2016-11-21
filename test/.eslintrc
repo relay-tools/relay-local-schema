@@ -1,5 +1,5 @@
 {
-  "extends": "airbnb",
+  "extends": "4catalyzer-react",
   "env": {
     "mocha": true
   },
@@ -7,15 +7,9 @@
     "expect": true
   },
   "rules": {
-    "max-len": [2, 79, {
-      "ignorePattern": " // eslint-disable-line "
-    }],
-    "react/jsx-filename-extension": [2, {
-      "extensions": [".js"]
-    }],
-    "react/no-multi-comp": 0,
-    "react/prop-types": 0,
-    "import/no-extraneous-dependencies": [2, {
+    "react/no-multi-comp": "off",
+    "react/prop-types": "off",
+    "import/no-extraneous-dependencies": ["error", {
       "devDependencies": true
     }]
   }
