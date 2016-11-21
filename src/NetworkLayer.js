@@ -1,6 +1,6 @@
 import { graphql } from 'graphql';
 
-import formatRequestErrors from './__forks__/formatRequestErrors';
+import createRequestError from './__forks__/createRequestError';
 
 export default class NetworkLayer {
   constructor({ schema, rootValue, contextValue, onError }) {
@@ -31,20 +31,17 @@ export default class NetworkLayer {
       this.rootValue,
       this.context,
       request.getVariables()
-    ).then(({ data, errors }) => {
-      if (errors) {
-        request.reject(new Error(
-          `Failed to execute ${requestType} \`${request.getDebugName()}\` for ` +
-          `the following reasons:\n\n${formatRequestErrors(request, errors)}`
-        ));
+    ).then((payload) => {
+      if (payload.errors) {
+        request.reject(createRequestError(request, requestType, payload));
         if (this.onError) {
-          this.onError(errors, request);
+          this.onError(payload.errors, request);
         }
 
         return;
       }
 
-      request.resolve({ response: data });
+      request.resolve({ response: payload.data });
     });
   }
 

@@ -69,6 +69,42 @@ describe('NetworkLayer', () => {
 
       ReactTestUtils.renderIntoDocument(<Component />);
     });
+
+    it('should fail', done => {
+      function Widget() {
+        return (<div />);
+      }
+
+      const WidgetContainer = Relay.createContainer(Widget, {
+        fragments: {
+          widget: () => Relay.QL`
+            fragment on Widget {
+              name
+            }
+          `,
+        },
+      });
+
+      const widgetQueryConfig = {
+        name: 'WidgetQueryConfig',
+        queries: {
+          widget: () => Relay.QL`query { invalid }`,
+        },
+        params: {},
+      };
+
+      ReactTestUtils.renderIntoDocument(<Relay.Renderer
+        Container={WidgetContainer}
+        queryConfig={widgetQueryConfig}
+        environment={environment}
+        render={({ error }) => {
+          if (error) {
+            expect(error.source.errors[0].message).to.equal('Always fail');
+            done();
+          }
+        }}
+      />);
+    });
   });
 
   describe('mutation', () => {
