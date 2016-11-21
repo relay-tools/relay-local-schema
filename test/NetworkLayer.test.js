@@ -20,7 +20,7 @@ describe('NetworkLayer', () => {
   });
 
   describe('query', () => {
-    it('should fetch data', done => {
+    it('should fetch data', (done) => {
       function Widget({ widget }) {
         return (
           <div>{widget.name}</div>
@@ -70,7 +70,7 @@ describe('NetworkLayer', () => {
       ReactTestUtils.renderIntoDocument(<Component />);
     });
 
-    it('should fail', done => {
+    it('should fail', (done) => {
       function Widget() {
         return (<div />);
       }
@@ -108,7 +108,7 @@ describe('NetworkLayer', () => {
   });
 
   describe('mutation', () => {
-    it('should execute mutations', done => {
+    it('should execute mutations', (done) => {
       class SetWidgetNameMutation extends Relay.Mutation {
         static fragments = {
           widget: () => Relay.QL`
@@ -166,7 +166,7 @@ describe('NetworkLayer', () => {
 
         render() {
           return (
-            <div ref={c => { this.node = c; }}>
+            <div ref={(c) => { this.node = c; }}>
               {this.props.widget.name}
             </div>
           );
