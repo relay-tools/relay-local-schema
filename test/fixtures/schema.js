@@ -12,8 +12,8 @@ export function resetData() {
 }
 
 /* eslint-disable no-use-before-define */
-const { nodeInterface, nodeField } = nodeDefinitions(
-  () => widget, () => Widget
+const { nodeInterface, nodeField, nodesField } = nodeDefinitions(
+  () => widget, () => Widget,
 );
 /* eslint-enable */
 
@@ -32,6 +32,7 @@ const query = new GraphQLObjectType({
   name: 'Query',
   fields: {
     node: nodeField,
+    nodes: nodesField,
     widget: {
       type: Widget,
       resolve: () => widget,

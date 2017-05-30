@@ -1,0 +1,41 @@
+type Mutation {
+  setWidgetName(input: SetWidgetNameInput!): SetWidgetNamePayload
+}
+
+# An object with an ID
+interface Node {
+  # The id of the object.
+  id: ID!
+}
+
+type Query {
+  # Fetches an object given its ID
+  node(
+    # The ID of an object
+    id: ID!
+  ): Node
+
+  # Fetches objects given their IDs
+  nodes(
+    # The IDs of objects
+    ids: [ID!]!
+  ): [Node]!
+  widget: Widget
+  invalid: Widget
+}
+
+input SetWidgetNameInput {
+  name: String!
+  clientMutationId: String
+}
+
+type SetWidgetNamePayload {
+  widget: Widget
+  clientMutationId: String
+}
+
+type Widget implements Node {
+  # The ID of an object
+  id: ID!
+  name: String
+}

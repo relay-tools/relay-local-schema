@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactTestUtils from 'react-addons-test-utils';
 import ReactDOM from 'react-dom';
-import Relay from 'react-relay';
+import ReactTestUtils from 'react-dom/test-utils';
+import Relay from 'react-relay/classic';
 
 import RelayLocalSchema from '../src';
 
@@ -13,7 +13,7 @@ describe('NetworkLayer', () => {
   beforeEach(() => {
     environment = new Relay.Environment();
     environment.injectNetworkLayer(
-      new RelayLocalSchema.NetworkLayer({ schema })
+      new RelayLocalSchema.NetworkLayer({ schema }),
     );
 
     resetData();
@@ -155,7 +155,7 @@ describe('NetworkLayer', () => {
           const { relay, widget } = this.props;
 
           relay.commitUpdate(
-            new SetWidgetNameMutation({ widget, name: 'bar' })
+            new SetWidgetNameMutation({ widget, name: 'bar' }),
           );
         }
 
