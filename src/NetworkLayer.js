@@ -20,7 +20,7 @@ export default class NetworkLayer {
 
   sendQueries(queryRequests) {
     return Promise.all(queryRequests.map(queryRequest =>
-      this.executeRequest('query', queryRequest)
+      this.executeRequest('query', queryRequest),
     ));
   }
 
@@ -30,7 +30,7 @@ export default class NetworkLayer {
       request.getQueryString(),
       this.rootValue,
       this.context,
-      request.getVariables()
+      request.getVariables(),
     ).then((payload) => {
       if (payload.errors) {
         request.reject(createRequestError(request, requestType, payload));
