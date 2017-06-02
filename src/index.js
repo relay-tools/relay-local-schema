@@ -1,1 +1,1 @@
-export * from './modern';
+export { Network } from './modern';
