@@ -1,3 +1,1 @@
-import NetworkLayer from './NetworkLayer';
-
-export default { NetworkLayer };
+export * from './modern';

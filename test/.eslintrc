@@ -1,10 +1,7 @@
 {
   "extends": "4catalyzer-react",
   "env": {
-    "mocha": true
-  },
-  "globals": {
-    "expect": true
+    "jest": true
   },
   "rules": {
     "react/no-multi-comp": "off",
