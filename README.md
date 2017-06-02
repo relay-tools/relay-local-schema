@@ -1,16 +1,42 @@
-# relay-local-schema [![Travis][build-badge]][build] [![npm][npm-badge]][npm]
+# Relay Local Schema [![Travis][build-badge]][build] [![npm][npm-badge]][npm]
 Use [Relay](http://facebook.github.io/relay/) without a GraphQL server.
 
 [![Discord][discord-badge]][discord]
 
 ## Usage
 
-Use `RelayLocalSchema.NetworkLayer` to execute GraphQL queries locally, rather than against a separate GraphQL server.
-
-This is intended for exploratory work, integration tests, demos, and working with local data. This is not generally intended as a substitute for a remote backend, except possibly when using local data as a persistent cache.
+### Relay Modern
 
 ```js
-import RelayLocalSchema from 'relay-local-schema';
+import { Network } from 'relay-local-schema';
+
+import schema from './data/schema';
+
+const environment = new Environment({
+  network: Network.create({ schema }),
+  /* ... */
+});
+```
+
+This will execute queries against the specified schema locally, rather than against a separate GraphQL server.
+
+You can also specify a GraphQL.js `rootValue` or `contextValue`:
+
+```js
+const environment = new Environment({
+  network: Network.create({
+    schema,
+    rootValue: 'foo',
+    contextValue: 'bar',
+  }),
+  /* ... */
+});
+```
+
+### Relay Classic
+
+```js
+import RelayLocalSchema from 'relay-local-schema/lib/classic';
 
 import schema from './data/schema';
 
@@ -19,18 +45,24 @@ Relay.injectNetworkLayer(
 );
 ```
 
-You can also supply a GraphQL.js `rootValue` or an `onError` callback to the
-constructor:
+This will execute queries against the specified schema locally, rather than against a separate GraphQL server.
+
+You can also supply a GraphQL.js `rootValue` or `contextValue`, or an `onError` callback:
 
 ```js
 Relay.injectNetworkLayer(
   new RelayLocalSchema.NetworkLayer({
     schema,
     rootValue: 'foo',
+    contextValue: 'bar',
     onError: (errors, request) => console.error(errors, request),
   })
 );
 ```
+
+## Caveat
+
+This is intended for exploratory work, integration tests, demos, and working with local data. This is not generally intended as a substitute for a remote GraphQL back end in production.
 
 [build-badge]: https://img.shields.io/travis/relay-tools/relay-local-schema/master.svg
 [build]: https://travis-ci.org/relay-tools/relay-local-schema

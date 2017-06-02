@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
 import Relay from 'react-relay/classic';
 
-import RelayLocalSchema from '../src';
+import RelayLocalSchema from '../../src/classic';
 
-import schema, { resetData } from './fixtures/schema';
+import schema, { resetData } from '../fixtures/schema';
 
 describe('NetworkLayer', () => {
   let environment;
@@ -51,7 +51,7 @@ describe('NetworkLayer', () => {
             return;
           }
 
-          expect(ReactDOM.findDOMNode(this).innerHTML).to.equal('foo');  // eslint-disable-line react/no-find-dom-node
+          expect(ReactDOM.findDOMNode(this).innerHTML).toBe('foo');  // eslint-disable-line react/no-find-dom-node
           done();
         };
 
@@ -99,7 +99,7 @@ describe('NetworkLayer', () => {
         environment={environment}
         render={({ error }) => {
           if (error) {
-            expect(error.source.errors[0].message).to.equal('Always fail');
+            expect(error.source.errors[0].message).toBe('Always fail');
             done();
           }
         }}
@@ -150,7 +150,7 @@ describe('NetworkLayer', () => {
 
       class Widget extends React.Component {
         componentDidMount() {
-          expect(this.node.innerHTML).to.equal('foo');
+          expect(this.node.innerHTML).toBe('foo');
 
           const { relay, widget } = this.props;
 
@@ -160,7 +160,7 @@ describe('NetworkLayer', () => {
         }
 
         componentDidUpdate() {
-          expect(this.node.innerHTML).to.equal('bar');
+          expect(this.node.innerHTML).toBe('bar');
           done();
         }
 
