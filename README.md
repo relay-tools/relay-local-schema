@@ -8,6 +8,7 @@ Use [Relay](http://facebook.github.io/relay/) without a GraphQL server.
 ### Relay Modern
 
 ```js
+import { Environment } from 'react-relay';
 import { Network } from 'relay-local-schema';
 
 import schema from './data/schema';
@@ -29,6 +30,20 @@ const environment = new Environment({
     rootValue: 'foo',
     contextValue: 'bar',
   }),
+  /* ... */
+});
+```
+
+For more control over the network layer, you can use `createFetch` to create just the fetch function.
+
+```js
+import { Environment, Network } from 'react-relay';
+import { createFetch } from 'relay-local-schema';
+
+import schema from './data/schema';
+
+const environment = new Environment({
+  network: Network.create(createFetch({ schema })),
   /* ... */
 });
 ```
