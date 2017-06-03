@@ -1,1 +1,1 @@
-export { Network } from './modern';
+export { createFetch, Network } from './modern';
