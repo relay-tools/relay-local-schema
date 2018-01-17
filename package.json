@@ -32,12 +32,10 @@
     "url": "https://github.com/relay-tools/relay-local-schema/issues"
   },
   "homepage": "https://github.com/relay-tools/relay-local-schema#readme",
-  "dependencies": {
-    "relay-runtime": "^1.0.0"
-  },
   "peerDependencies": {
     "graphql": ">=0.5.0",
-    "react-relay": ">=0.8.0"
+    "react-relay": ">=0.8.0",
+    "relay-runtime": ">=1.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -61,6 +59,7 @@
     "react-dom": "^15.5.4",
     "react-relay": "^1.0.0",
     "relay-compiler": "^1.0.0",
+    "relay-runtime": "^1.0.0",
     "rimraf": "^2.6.1"
   }
 }
