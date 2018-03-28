@@ -1,13 +1,20 @@
 {
-  "extends": "4catalyzer-react",
+  "extends": [
+    "4catalyzer-react",
+    "prettier"
+  ],
+  "plugins": [
+    "prettier"
+  ],
   "env": {
     "jest": true
   },
   "rules": {
-    "react/no-multi-comp": "off",
-    "react/prop-types": "off",
+    "prettier/prettier": "error",
     "import/no-extraneous-dependencies": ["error", {
       "devDependencies": true
-    }]
+    }],
+    "react/no-multi-comp": "off",
+    "react/prop-types": "off"
   }
 }

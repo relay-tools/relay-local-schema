@@ -2,22 +2,22 @@ type Mutation {
   setWidgetName(input: SetWidgetNameInput!): SetWidgetNamePayload
 }
 
-# An object with an ID
+"""An object with an ID"""
 interface Node {
-  # The id of the object.
+  """The id of the object."""
   id: ID!
 }
 
 type Query {
-  # Fetches an object given its ID
+  """Fetches an object given its ID"""
   node(
-    # The ID of an object
+    """The ID of an object"""
     id: ID!
   ): Node
 
-  # Fetches objects given their IDs
+  """Fetches objects given their IDs"""
   nodes(
-    # The IDs of objects
+    """The IDs of objects"""
     ids: [ID!]!
   ): [Node]!
   widget: Widget
@@ -35,7 +35,7 @@ type SetWidgetNamePayload {
 }
 
 type Widget implements Node {
-  # The ID of an object
+  """The ID of an object"""
   id: ID!
   name: String
 }
