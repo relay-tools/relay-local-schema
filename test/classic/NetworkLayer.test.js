@@ -20,11 +20,9 @@ describe('NetworkLayer', () => {
   });
 
   describe('query', () => {
-    it('should fetch data', (done) => {
+    it('should fetch data', done => {
       function Widget({ widget }) {
-        return (
-          <div>{widget.name}</div>
-        );
+        return <div>{widget.name}</div>;
       }
 
       const WidgetContainer = Relay.createContainer(Widget, {
@@ -46,12 +44,12 @@ describe('NetworkLayer', () => {
       };
 
       class Component extends React.Component {
-        onReadyStateChange = (readyState) => {
+        onReadyStateChange = readyState => {
           if (!readyState.done) {
             return;
           }
 
-          expect(ReactDOM.findDOMNode(this).innerHTML).toBe('foo');  // eslint-disable-line react/no-find-dom-node
+          expect(ReactDOM.findDOMNode(this).innerHTML).toBe('foo'); // eslint-disable-line react/no-find-dom-node
           done();
         };
 
@@ -70,9 +68,9 @@ describe('NetworkLayer', () => {
       ReactTestUtils.renderIntoDocument(<Component />);
     });
 
-    it('should fail', (done) => {
+    it('should fail', done => {
       function Widget() {
-        return (<div />);
+        return <div />;
       }
 
       const WidgetContainer = Relay.createContainer(Widget, {
@@ -93,22 +91,24 @@ describe('NetworkLayer', () => {
         params: {},
       };
 
-      ReactTestUtils.renderIntoDocument(<Relay.Renderer
-        Container={WidgetContainer}
-        queryConfig={widgetQueryConfig}
-        environment={environment}
-        render={({ error }) => {
-          if (error) {
-            expect(error.source.errors[0].message).toBe('Always fail');
-            done();
-          }
-        }}
-      />);
+      ReactTestUtils.renderIntoDocument(
+        <Relay.Renderer
+          Container={WidgetContainer}
+          queryConfig={widgetQueryConfig}
+          environment={environment}
+          render={({ error }) => {
+            if (error) {
+              expect(error.source.errors[0].message).toBe('Always fail');
+              done();
+            }
+          }}
+        />,
+      );
     });
   });
 
   describe('mutation', () => {
-    it('should execute mutations', (done) => {
+    it('should execute mutations', done => {
       class SetWidgetNameMutation extends Relay.Mutation {
         static fragments = {
           widget: () => Relay.QL`
@@ -133,12 +133,14 @@ describe('NetworkLayer', () => {
         }
 
         getConfigs() {
-          return [{
-            type: 'FIELDS_CHANGE',
-            fieldIDs: {
-              widget: this.props.widget.id,
+          return [
+            {
+              type: 'FIELDS_CHANGE',
+              fieldIDs: {
+                widget: this.props.widget.id,
+              },
             },
-          }];
+          ];
         }
 
         getVariables() {
@@ -166,7 +168,11 @@ describe('NetworkLayer', () => {
 
         render() {
           return (
-            <div ref={(c) => { this.node = c; }}>
+            <div
+              ref={c => {
+                this.node = c;
+              }}
+            >
               {this.props.widget.name}
             </div>
           );

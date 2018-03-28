@@ -1,7 +1,14 @@
-import { GraphQLNonNull, GraphQLObjectType, GraphQLSchema, GraphQLString }
-  from 'graphql';
-import { globalIdField, mutationWithClientMutationId, nodeDefinitions }
-  from 'graphql-relay';
+import {
+  GraphQLNonNull,
+  GraphQLObjectType,
+  GraphQLSchema,
+  GraphQLString,
+} from 'graphql';
+import {
+  globalIdField,
+  mutationWithClientMutationId,
+  nodeDefinitions,
+} from 'graphql-relay';
 
 const widget = {
   id: '',
@@ -13,7 +20,8 @@ export function resetData() {
 
 /* eslint-disable no-use-before-define */
 const { nodeInterface, nodeField, nodesField } = nodeDefinitions(
-  () => widget, () => Widget,
+  () => widget,
+  () => Widget,
 );
 /* eslint-enable */
 

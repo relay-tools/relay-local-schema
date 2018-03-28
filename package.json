@@ -17,6 +17,17 @@
     "testonly": "jest --runInBand --verbose",
     "update-schema": "babel-node test/fixtures/updateSchema.js"
   },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "printWidth": 79,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/relay-tools/relay-local-schema.git"
@@ -38,27 +49,34 @@
     "relay-runtime": ">=1.0.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-eslint": "^7.2.3",
-    "babel-jest": "^20.0.3",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-jest": "^22.4.3",
     "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-relay": "^1.0.1",
-    "babel-polyfill": "^6.23.0",
-    "babel-preset-latest": "^6.24.1",
+    "babel-plugin-relay": "^1.5.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
-    "eslint": "^3.19.0",
-    "eslint-config-4catalyzer-react": "^0.2.0",
-    "eslint-plugin-import": "^2.3.0",
-    "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-react": "^6.7.1",
-    "graphql": "^0.10.1",
-    "graphql-relay": "^0.5.1",
-    "jest": "^20.0.4",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-relay": "^1.0.0",
-    "relay-compiler": "^1.0.0",
-    "rimraf": "^2.6.1"
+    "eslint": "^4.19.1",
+    "eslint-config-4catalyzer-react": "^0.4.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.7.0",
+    "graphql": "^0.13.2",
+    "graphql-relay": "^0.5.4",
+    "husky": "^0.14.3",
+    "jest": "^22.4.3",
+    "lint-staged": "^7.0.0",
+    "prettier": "^1.11.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-relay": "^1.5.0",
+    "relay-compiler": "^1.5.0",
+    "relay-runtime": "^1.5.0",
+    "rimraf": "^2.6.2"
   }
 }
