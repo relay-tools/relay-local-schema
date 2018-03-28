@@ -64,6 +64,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
+    "codecov": "^3.0.0",
     "eslint": "^4.19.1",
     "eslint-config-4catalyzer-react": "^0.4.1",
     "eslint-config-prettier": "^2.9.0",
