@@ -13,7 +13,7 @@
     "prepublish": "npm run build",
     "relay-compiler": "relay-compiler --src test/modern --schema test/fixtures/schema.graphql",
     "tdd": "jest --watch",
-    "test": "npm run build-fixtures && npm run lint && npm run testonly",
+    "test": "npm run build-fixtures && npm run lint && npm run testonly -- --coverage",
     "testonly": "jest --runInBand --verbose",
     "update-schema": "babel-node test/fixtures/updateSchema.js"
   },
@@ -27,6 +27,11 @@
     "printWidth": 79,
     "singleQuote": true,
     "trailingComma": "all"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**"
+    ]
   },
   "repository": {
     "type": "git",
