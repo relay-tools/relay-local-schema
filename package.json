@@ -75,7 +75,7 @@
     "graphql": "^14.1.1",
     "graphql-relay": "^0.5.4",
     "husky": "^0.14.3",
-    "jest": "^22.4.3",
+    "jest": "^24.5.0",
     "lint-staged": "^7.0.0",
     "prettier": "^1.11.1",
     "react": "^16.2.0",
