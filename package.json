@@ -81,6 +81,6 @@
     "lint-staged": "^8.1.5",
     "prettier": "^1.16.4",
     "relay-compiler": "^3.0.0",
-    "relay-runtime": "^3.0.0"
+    "relay-runtime": "^4.0.0"
   }
 }
