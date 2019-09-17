@@ -1,15 +1,17 @@
-import { Environment, graphql, RecordSource, Store } from 'relay-runtime';
+import {
+  createOperationDescriptor,
+  Environment,
+  getRequest,
+  graphql,
+  RecordSource,
+  Store,
+} from 'relay-runtime';
 
 import { Network } from '../src';
 
 import schema, { resetData } from './fixtures/schema';
 
 function executeQuery(environment, taggedNode) {
-  const {
-    getRequest,
-    createOperationDescriptor,
-  } = environment.unstable_internal;
-
   const query = getRequest(taggedNode);
   const operation = createOperationDescriptor(query);
 
