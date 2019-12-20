@@ -59,12 +59,12 @@
   },
   "devDependencies": {
     "@4c/babel-preset": "^7.2.4",
-    "@babel/cli": "^7.7.5",
-    "@babel/core": "^7.7.5",
-    "@babel/node": "^7.7.4",
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/node": "^7.7.7",
     "babel-jest": "^24.9.0",
     "babel-plugin-add-module-exports": "^1.0.2",
-    "babel-plugin-relay": "^7.1.0",
+    "babel-plugin-relay": "^8.0.0",
     "codecov": "^3.6.1",
     "eslint": "^6.7.2",
     "eslint-config-4catalyzer": "^1.0.1",
@@ -79,7 +79,7 @@
     "jest": "^24.9.0",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
-    "relay-compiler": "^7.1.0",
-    "relay-runtime": "^7.1.0"
+    "relay-compiler": "^8.0.0",
+    "relay-runtime": "^8.0.0"
   }
 }
