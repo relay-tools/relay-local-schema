@@ -76,7 +76,7 @@
     "jest": "^25.1.0",
     "lint-staged": "^10.0.7",
     "prettier": "^1.19.1",
-    "relay-compiler": "^8.0.0",
+    "relay-compiler": "^9.0.0",
     "relay-runtime": "^8.0.0"
   }
 }
