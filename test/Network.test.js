@@ -39,7 +39,7 @@ describe('Network', () => {
         executeQuery(
           environment,
           graphql`
-            query Network_test_query_fetch_data_Query {
+            query NetworkTest_query_fetch_data_Query {
               widget {
                 name
               }
@@ -57,7 +57,7 @@ describe('Network', () => {
         executeQuery(
           environment,
           graphql`
-            query Network_test_query_fail_Query {
+            query NetworkTest_query_fail_Query {
               invalid {
                 name
               }
@@ -73,7 +73,7 @@ describe('Network', () => {
         executeQuery(
           environment,
           graphql`
-            mutation Network_test_mutation_execute_mutations_Mutation {
+            mutation NetworkTest_mutation_execute_mutations_Mutation {
               setWidgetName(input: { name: "bar" }) {
                 widget {
                   name
