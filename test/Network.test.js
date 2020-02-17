@@ -1,14 +1,13 @@
 import {
-  createOperationDescriptor,
   Environment,
-  getRequest,
-  graphql,
   RecordSource,
   Store,
+  createOperationDescriptor,
+  getRequest,
+  graphql,
 } from 'relay-runtime';
 
 import { Network } from '../src';
-
 import schema, { resetData } from './fixtures/schema';
 
 function executeQuery(environment, taggedNode) {
