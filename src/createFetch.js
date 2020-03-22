@@ -8,7 +8,7 @@ export default function createFetch({ schema, rootValue, contextValue }) {
       rootValue,
       contextValue,
       variables,
-    ).then(payload => {
+    ).then((payload) => {
       if (payload.errors) {
         throw new Error(payload.errors);
       }
