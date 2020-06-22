@@ -1,6 +1,6 @@
 # Relay Local Schema [![Travis][build-badge]][build] [![npm][npm-badge]][npm]
 
-Use [Relay](http://facebook.github.io/relay/) without a GraphQL server.
+Use [Relay](https://relay.dev/) without a GraphQL server.
 
 [![Codecov][codecov-badge]][codecov]
 [![Discord][discord-badge]][discord]
