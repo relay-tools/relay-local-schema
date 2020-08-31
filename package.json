@@ -55,7 +55,7 @@
     "relay-runtime": ">=1.0.0"
   },
   "devDependencies": {
-    "@4c/babel-preset": "^7.4.0",
+    "@4c/babel-preset": "^7.4.1",
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.11.4",
     "@babel/node": "^7.10.5",
@@ -74,8 +74,8 @@
     "graphql-relay": "^0.6.0",
     "husky": "^4.2.5",
     "jest": "^26.4.2",
-    "lint-staged": "^10.2.11",
-    "prettier": "^2.0.5",
+    "lint-staged": "^10.2.13",
+    "prettier": "^2.1.1",
     "relay-compiler": "^10.0.1",
     "relay-runtime": "^10.0.1"
   }
