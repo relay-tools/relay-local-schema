@@ -7,8 +7,8 @@ import {
   graphql,
 } from 'relay-runtime';
 
-import { Network } from '../src';
 import schema, { resetData } from './fixtures/schema';
+import { Network } from '../src';
 
 function executeQuery(environment, taggedNode) {
   const query = getRequest(taggedNode);
