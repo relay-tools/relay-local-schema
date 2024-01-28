@@ -1,13 +1,3 @@
-type Mutation {
-  setWidgetName(input: SetWidgetNameInput!): SetWidgetNamePayload
-}
-
-"""An object with an ID"""
-interface Node {
-  """The id of the object."""
-  id: ID!
-}
-
 type Query {
   """Fetches an object given its ID"""
   node(
@@ -24,9 +14,20 @@ type Query {
   invalid: Widget
 }
 
-input SetWidgetNameInput {
-  name: String!
-  clientMutationId: String
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
+}
+
+type Widget implements Node {
+  """The ID of an object"""
+  id: ID!
+  name: String
+}
+
+type Mutation {
+  setWidgetName(input: SetWidgetNameInput!): SetWidgetNamePayload
 }
 
 type SetWidgetNamePayload {
@@ -34,8 +35,7 @@ type SetWidgetNamePayload {
   clientMutationId: String
 }
 
-type Widget implements Node {
-  """The ID of an object"""
-  id: ID!
-  name: String
+input SetWidgetNameInput {
+  name: String!
+  clientMutationId: String
 }

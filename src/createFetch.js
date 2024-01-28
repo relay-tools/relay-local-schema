@@ -1,16 +1,16 @@
 import { graphql } from 'graphql';
 
 export default function createFetch({ schema, rootValue, contextValue }) {
-  return function fetchQuery(operation, variables) {
-    return graphql(
+  return function fetchQuery(operation, variableValues) {
+    return graphql({
       schema,
-      operation.text,
+      source: operation.text,
       rootValue,
       contextValue,
-      variables,
-    ).then((payload) => {
+      variableValues,
+    }).then((payload) => {
       if (payload.errors) {
-        throw new Error(payload.errors);
+        throw new Error(payload.errors.join('\n'));
       }
 
       return payload;
